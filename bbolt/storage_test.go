@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	store "github.com/iwittkau/minio-analytics/bbolt"
+	store "github.com/codeandship/minio-analytics/bbolt"
 
-	minioanalytics "github.com/iwittkau/minio-analytics"
+	minioanalytics "github.com/codeandship/minio-analytics"
 	"github.com/stretchr/testify/require"
 )
 

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	minioanalytics "github.com/iwittkau/minio-analytics"
+	minioanalytics "github.com/codeandship/minio-analytics"
 	bolt "go.etcd.io/bbolt"
 )
 

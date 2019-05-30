@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	minioanalytics "github.com/iwittkau/minio-analytics"
+	minioanalytics "github.com/codeandship/minio-analytics"
 	"github.com/stretchr/testify/require"
 )
 

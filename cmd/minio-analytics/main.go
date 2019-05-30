@@ -13,9 +13,9 @@ import (
 	nats "github.com/nats-io/nats.go"
 	"github.com/peterbourgon/ff"
 
-	minioanalytics "github.com/iwittkau/minio-analytics"
-	"github.com/iwittkau/minio-analytics/bbolt"
-	"github.com/iwittkau/minio-analytics/http"
+	minioanalytics "github.com/codeandship/minio-analytics"
+	"github.com/codeandship/minio-analytics/bbolt"
+	"github.com/codeandship/minio-analytics/http"
 )
 
 func main() {

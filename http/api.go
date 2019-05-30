@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	minioanalytics "github.com/iwittkau/minio-analytics"
+	minioanalytics "github.com/codeandship/minio-analytics"
 )
 
 type API struct {
