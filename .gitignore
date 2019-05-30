@@ -1,0 +1,4 @@
+.env
+.mp3
+deployments/test/minio
+deployments/test/minio-analytics

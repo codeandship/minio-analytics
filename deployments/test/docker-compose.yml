@@ -1,0 +1,25 @@
+version: '3'
+services:
+ minio:
+  image: minio/minio:latest
+  volumes:
+   - $PWD/minio:/data
+  ports:
+   - "9000:9000"
+  environment:
+   MINIO_ACCESS_KEY: $MINIO_ACCESS_KEY
+   MINIO_SECRET_KEY: $MINIO_SECRET_KEY
+  command: server /data
+ analytics:
+  image: iwittkau/minio-analytics
+  volumes: 
+    - $PWD/minio-analytics:/data
+  environment:
+   MINIO_ANALYTICS_MINIO_ACC_KEY: $MINIO_ACCESS_KEY
+   MINIO_ANALYTICS_MINIO_SEC_KEY: $MINIO_SECRET_KEY
+   MINIO_ANALYTICS_MINIO_BUCKET: "podcast"
+  ports:
+    - "8080:80"
+ nats:
+  image: nats:latest
+  command: ["-D"]
