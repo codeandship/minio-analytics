@@ -1,0 +1,20 @@
+FROM golang:1.12-alpine
+
+ARG GOPROXY
+
+RUN apk add -U --no-cache ca-certificates
+
+WORKDIR /build
+
+ADD . /build
+
+RUN GOPROXY=$GOPROXY CGO_ENABLED=0 go build -o ma-exporter ./cmd/ma-exporter
+
+FROM scratch
+
+VOLUME [ "/data" ]
+
+COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=0 /build/ma-exporter /ma-exporter
+
+ENTRYPOINT [ "/ma-exporter" ]

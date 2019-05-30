@@ -4,6 +4,10 @@ VER=${shell git describe --tags}
 docker-build:
 	docker build --build-arg GOPROXY=${GOPROXY} -t iwittkau/minio-analytics .
 
+.PHONY: docker-build-exporter
+docker-build-exporter:
+	docker build -f Dockerfile.exporter --build-arg GOPROXY=${GOPROXY} -t iwittkau/minio-analytics-exporter .
+
 .PHONY: docker-push
 docker-push:
 	docker tag iwittkau/minio-analytics iwittkau/minio-analytics:${VER}
