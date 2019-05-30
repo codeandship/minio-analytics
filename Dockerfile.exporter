@@ -17,4 +17,6 @@ VOLUME [ "/data" ]
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=0 /build/ma-exporter /ma-exporter
 
+EXPOSE 9601
+
 ENTRYPOINT [ "/ma-exporter" ]

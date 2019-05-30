@@ -84,7 +84,7 @@ func main() {
 		prometheus.MustRegister(headRequestsGauge)
 		prometheus.MustRegister(userAgentsGauge)
 		http.Handle("/metrics", promhttp.Handler())
-		if err := http.ListenAndServe(":2112", nil); err != nil {
+		if err := http.ListenAndServe(":9601", nil); err != nil {
 			log.Fatal(err.Error())
 		}
 	}()
@@ -101,6 +101,9 @@ func main() {
 		if err != nil {
 			log.Println(err.Error())
 			continue
+		}
+		if authUser != "" && authPassword != "" {
+			req.SetBasicAuth(authUser, authPassword)
 		}
 		res, err := c.Do(req)
 		if err != nil {

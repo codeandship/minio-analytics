@@ -14,4 +14,6 @@ VOLUME [ "/data" ]
 
 COPY --from=0 /build/minio-analytics /minio-analytics
 
+EXPOSE 80
+
 ENTRYPOINT [ "/minio-analytics" ]
