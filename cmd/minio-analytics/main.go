@@ -112,11 +112,6 @@ func main() {
 				log.Println(err.Error())
 			}
 		}
-		// if al, err := s.ListAnalytics(); err == nil {
-		// 	for _, a := range al {
-		// 		log.Printf("%+v", a)
-		// 	}
-		// }
 	})
 
 	// Initialize minio client object.
