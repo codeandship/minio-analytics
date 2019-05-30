@@ -1,4 +1,4 @@
-module github.com/iwittkau/minio-analytics
+module github.com/codeandship/minio-analytics
 
 go 1.12
 
