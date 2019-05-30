@@ -21,7 +21,7 @@ import (
 func main() {
 	log.SetFlags(log.Ldate | log.Lmicroseconds | log.Lshortfile)
 
-	fs := flag.NewFlagSet("my-program", flag.ExitOnError)
+	fs := flag.NewFlagSet("minio-analytics", flag.ExitOnError)
 	var (
 		natsSubject    string
 		natsAddr       string
