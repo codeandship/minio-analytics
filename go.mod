@@ -11,6 +11,7 @@ require (
 	github.com/nats-io/nkeys v0.0.2 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/peterbourgon/ff v1.2.0
+	github.com/prometheus/client_golang v0.9.3
 	github.com/stretchr/testify v1.3.0
 	go.etcd.io/bbolt v1.3.2
 )

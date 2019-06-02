@@ -126,7 +126,10 @@ func main() {
 }
 
 func setPromMetrics(al []minioanalytics.Analytics) {
-	for _, a := range al {
+
+	aggr := minioanalytics.MapAnayltics(al)
+
+	for _, a := range aggr {
 		getRequestsGauge.With(prometheus.Labels{"file": a.Filename}).Set(float64(a.GetRequestCount))
 		headRequestsGauge.With(prometheus.Labels{"file": a.Filename}).Set(float64(a.HeadRequestCount))
 		for ua, count := range a.UserAgentCount {
