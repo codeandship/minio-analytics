@@ -80,7 +80,13 @@ func main() {
 		os.Exit(1)
 	}
 
-	api := http.NewAPI(addr, s)
+	uam, err := minioanalytics.NewUserAgentMater()
+	if err != nil {
+		log.Println("user agent matcher:", err.Error())
+		os.Exit(1)
+	}
+
+	api := http.NewAPI(addr, s, uam)
 
 	go func() {
 		err := api.Open()

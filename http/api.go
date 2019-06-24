@@ -3,20 +3,22 @@ package http
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	minioanalytics "github.com/codeandship/minio-analytics"
+	"github.com/gin-gonic/gin"
 )
 
 type API struct {
 	address string
 	r       *gin.Engine
 	store   minioanalytics.Storage
+	uam     *minioanalytics.UserAgentMatcher
 }
 
-func NewAPI(addr string, s minioanalytics.Storage) *API {
+func NewAPI(addr string, s minioanalytics.Storage, uam *minioanalytics.UserAgentMatcher) *API {
 	a := &API{
 		address: addr,
 		store:   s,
+		uam:     uam,
 	}
 	return a
 }
@@ -43,5 +45,11 @@ func (a *API) handleGetAnalytics(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+
+	for i, r := range res {
+		r.UserAgentCount = a.uam.MatchMap(r.UserAgentCount)
+		res[i] = r
+	}
+
 	c.JSON(http.StatusOK, res)
 }
